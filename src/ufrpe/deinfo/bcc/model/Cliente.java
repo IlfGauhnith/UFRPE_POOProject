@@ -1,6 +1,6 @@
 package ufrpe.deinfo.bcc.model;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Cliente {
@@ -13,7 +13,7 @@ public abstract class Cliente {
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
-        frota = new LinkedHashSet<>();
+        frota = new HashSet<Caminhao>();
     }
 
     public Endereco getEndereco() {

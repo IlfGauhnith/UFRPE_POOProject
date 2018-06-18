@@ -62,4 +62,21 @@ public class Peca {
 
         quantidade = quantidade - qtd;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Peca peca = (Peca) o;
+
+        return ref.equals(peca.ref);
+    }
+
+    @Override
+    public int hashCode() {
+        return ref.hashCode();
+    }
+
+
 }

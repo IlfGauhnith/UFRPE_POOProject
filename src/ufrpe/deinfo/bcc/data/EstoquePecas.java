@@ -1,4 +1,6 @@
-package ufrpe.deinfo.bcc.model;
+package ufrpe.deinfo.bcc.data;
+
+import ufrpe.deinfo.bcc.model.Peca;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +20,7 @@ public class EstoquePecas {
         return instance;
     }
 
-    public boolean existeNoEstoque(Peca peca) throws IllegalArgumentException {
+    private boolean existeNoEstoque(Peca peca) throws IllegalArgumentException {
         if(estoquePecas.contains(peca)) {
             return true;
         } else if(peca == null) {
@@ -29,19 +31,13 @@ public class EstoquePecas {
     }
 
     public void criarPeca(Peca peca) throws IllegalArgumentException {
-        if(existeNoEstoque(peca)) {
-            throw new IllegalArgumentException("Peça ja existente no estoque.");
-        }
-
-        estoquePecas.add(peca);
+        if(!estoquePecas.add(peca))
+            throw new IllegalArgumentException();
     }
 
     public void deletarPeca(Peca peca) throws IllegalArgumentException {
-        if(!(existeNoEstoque(peca))) {
-            throw new IllegalArgumentException("Peça não consta no estoque");
-        }
-
-        estoquePecas.remove(peca);
+        if(!estoquePecas.remove(peca))
+            throw new IllegalArgumentException();
     }
 
     public void adicionarAoEstoque(Peca peca, int qtd) throws IllegalArgumentException {
