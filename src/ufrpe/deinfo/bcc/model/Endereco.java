@@ -22,6 +22,8 @@ public class Endereco {
         this.cep = cep;
     }
 
+    //Faz sentido utilizar exceptions para botar em prática de fato o encapsulamento?
+
     public String getPais() {
         return pais;
     }
@@ -101,5 +103,20 @@ public class Endereco {
             throw new IllegalArgumentException();
 
         this.cep = cep;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Endereco)) return false;
+
+        Endereco endereco = (Endereco) o;
+
+        return getCep().equals(endereco.getCep());
+    }
+
+    @Override
+    public int hashCode() {
+        return getCep().hashCode();
     }
 }

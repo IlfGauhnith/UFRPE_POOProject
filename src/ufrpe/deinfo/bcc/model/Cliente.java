@@ -15,4 +15,46 @@ public abstract class Cliente {
         this.telefone = telefone;
         frota = new LinkedHashSet<>();
     }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cliente)) return false;
+
+        Cliente cliente = (Cliente) o;
+
+        if (!getEmail().equals(cliente.getEmail())) return false;
+        return getTelefone().equals(cliente.getTelefone());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getEmail().hashCode();
+        result = 31 * result + getTelefone().hashCode();
+        return result;
+    }
 }
