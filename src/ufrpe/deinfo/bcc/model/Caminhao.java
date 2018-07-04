@@ -10,24 +10,34 @@ public class Caminhao {
     private String fabricante;
     private LocalDate ultimaManutencao;
     private boolean emServico = false;
+    private Cliente dono;
 
-    public Caminhao(String chassi, String placa, String modelo, int ano, String fabricante) {
+    public Caminhao(String chassi, String placa, String modelo, int ano, String fabricante,
+                    Cliente dono) throws IllegalArgumentException {
         this.chassi = chassi;
         this.placa = placa;
         this.modelo = modelo;
         this.ano = ano;
         this.fabricante = fabricante;
+        this.dono = dono;
     }
 
     public Caminhao(String chassi, String placa, String modelo, int ano, String fabricante,
-                    LocalDate ultimaManutencao, boolean emServico) {
+                    LocalDate ultimaManutencao, Cliente dono) throws IllegalArgumentException {
         this.chassi = chassi;
         this.placa = placa;
         this.modelo = modelo;
         this.ano = ano;
         this.fabricante = fabricante;
         this.ultimaManutencao = ultimaManutencao;
-        this.emServico = emServico;
+        this.dono = dono;
+    }
+
+    public Caminhao(String chassi, String placa) throws IllegalArgumentException {
+        if(chassi == null || placa == null)
+            throw new IllegalArgumentException();
+        this.chassi = chassi;
+        this.placa = placa;
     }
 
     public String getChassi() {

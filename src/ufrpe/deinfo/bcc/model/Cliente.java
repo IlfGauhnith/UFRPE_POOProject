@@ -57,4 +57,12 @@ public abstract class Cliente {
         result = 31 * result + getTelefone().hashCode();
         return result;
     }
+
+    public void adicionarCaminhaoAFrota(Caminhao caminhao) {
+        frota.add(caminhao);
+    }
+
+    public void removerCaminhaoDaFrota(Caminhao caminhao) {
+        frota.remove(caminhao);
+    }
 }
