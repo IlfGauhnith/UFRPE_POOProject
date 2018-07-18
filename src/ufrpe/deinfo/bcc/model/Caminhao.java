@@ -23,7 +23,7 @@ public class Caminhao {
     }
 
     public Caminhao(String chassi, String placa, String modelo, int ano, String fabricante,
-                    LocalDate ultimaManutencao, Cliente dono) throws IllegalArgumentException {
+                    LocalDate ultimaManutencao, Cliente dono) {
         this.chassi = chassi;
         this.placa = placa;
         this.modelo = modelo;
