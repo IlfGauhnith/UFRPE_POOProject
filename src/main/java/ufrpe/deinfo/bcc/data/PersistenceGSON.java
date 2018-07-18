@@ -9,6 +9,7 @@ public class PersistenceGSON {
     private static PersistenceGSON instance;
     private static Gson gson;
     private static File file;
+    private int i;
 
     private PersistenceGSON() {
         gson = new Gson();
