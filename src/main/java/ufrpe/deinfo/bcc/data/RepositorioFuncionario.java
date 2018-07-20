@@ -2,19 +2,18 @@ package ufrpe.deinfo.bcc.data;
 
 import ufrpe.deinfo.bcc.model.Funcionario;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 
 public class RepositorioFuncionario implements IRepositorio<Funcionario> {
     private static RepositorioFuncionario instance;
-    private Set<Funcionario> repositorio;
+    private List<Funcionario> repositorio;
 
     private RepositorioFuncionario() {
-        repositorio = new HashSet<Funcionario>();
+        repositorio = new ArrayList<>();
     }
 
-    public static RepositorioFuncionario getinstance() {
+    public static RepositorioFuncionario getInstance() {
         if(instance == null)
             instance = new RepositorioFuncionario();
 
@@ -36,7 +35,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario> {
             throw new IllegalArgumentException();
     }
 
-    public Collection<Funcionario> ler() {
+    public List<Funcionario> ler() {
         return repositorio;
     }
 

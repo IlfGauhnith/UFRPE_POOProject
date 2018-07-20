@@ -3,19 +3,24 @@ package ufrpe.deinfo.bcc.model;
 public class Funcionario {
     private String nome;
     private String cod;
-    private Cargos cargo;
+    private int cargo;
     private String login;
     private String senha;
 
-    public enum Cargos { CHEFEOFICINA, MECANICOCHEFE, ASSISTENTEMECANICO} //É correto declarar o enum aqui?
-
-    public Funcionario(String nome, String cod, Cargos cargo, String login, String senha) {
+    public Funcionario(String nome, String cod, int cargo, String login, String senha) {
         this.nome = nome;
         this.cod = cod;
         this.cargo = cargo;
         this.login = login;
         this.senha = senha;
     }
+
+    public Funcionario(String login, String pswd) { //Construtor para processos de login.
+        this.login = login;
+        this.senha = pswd;
+    }
+
+
 
     public String getNome() {
         return nome;
@@ -33,11 +38,11 @@ public class Funcionario {
         this.cod = cod;
     }
 
-    public Cargos getCargo() {
+    public int getCargo() {
         return cargo;
     }
 
-    public void setCargo(Cargos cargo) {
+    public void setCargo(int cargo) {
         this.cargo = cargo;
     }
 

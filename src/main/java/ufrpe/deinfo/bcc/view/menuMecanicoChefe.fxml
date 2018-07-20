@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.menuMecanicoChefe">
+   <children>
+      <MenuBar layoutX="223.0" prefHeight="29.0" prefWidth="600.0" AnchorPane.bottomAnchor="373.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Cadastrar">
+            <items>
+              <MenuItem fx:id="cadastrarCaminhaoMenuItem" mnemonicParsing="false" onAction="#cadastrarCaminhaoOnAction" text="Caminhão" />
+                  <MenuItem fx:id="cadastrarPecaMenuItem" mnemonicParsing="false" onAction="#cadastrarPecaOnAction" text="Peça" />
+                  <MenuItem fx:id="cadastrarServiçoMenuItem" mnemonicParsing="false" onAction="#cadastrarServicoOnAction" text="Serviço" />
+                  <MenuItem fx:id="cadastrarUsuarioMenuItem" mnemonicParsing="false" onAction="#cadastrarFuncionarioOnAction" text="Funcionário" />
+                  <Menu fx:id="menuCliente" mnemonicParsing="false" text="Cliente">
+                    <items>
+                      <MenuItem fx:id="cadastrarClienteFMenuItem" mnemonicParsing="false" onAction="#cadastrarClienteFOnAction" text="Cliente Físico" />
+                        <MenuItem fx:id="cadastrarClienteJMenuItem" mnemonicParsing="false" onAction="#cadastrarClienteJOnAction" text="Cliente Jurídico" />
+                    </items>
+                  </Menu>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Relatório">
+               <items>
+                  <MenuItem fx:id="relatorioCaminhaoMenuItem" mnemonicParsing="false" onAction="#relatorioCaminhaoOnAction" text="Caminhão" />
+                  <MenuItem fx:id="relatorioClienteMenuItem" mnemonicParsing="false" onAction="#relatorioClienteOnAction" text="Cliente" />
+                  <MenuItem fx:id="relatorioPecaMenuItem" mnemonicParsing="false" onAction="#relatorioPecaOnAction" text="Peça" />
+                  <MenuItem fx:id="relatorioServicoMenuItem" mnemonicParsing="false" onAction="#relatorioServicoOnAction" text="Serviço" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Sistema">
+            <items>
+              <MenuItem fx:id="sobreSistemaMenuItem" mnemonicParsing="false" onAction="#sobreSistemaOnAction" text="Sobre" />
+                  <MenuItem fx:id="sistemaTrocarMenuItem" mnemonicParsing="false" onAction="#trocarUsuarioOnAction" text="Trocar usuário" />
+                  <MenuItem fx:id="sistemaSairMenuItem" mnemonicParsing="false" onAction="#sairOnAction" text="Sair" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

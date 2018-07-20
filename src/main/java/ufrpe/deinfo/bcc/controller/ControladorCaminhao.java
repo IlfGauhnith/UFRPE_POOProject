@@ -71,4 +71,8 @@ public class ControladorCaminhao {
                                               String fabricante, Cliente dono) {
         return new ArrayList();
     }
+
+    public ArrayList<Caminhao> buscarTodosCaminhoes() {
+        return (ArrayList) repositorioCaminhao.ler();
+    }
 }

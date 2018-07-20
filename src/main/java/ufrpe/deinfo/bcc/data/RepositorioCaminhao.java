@@ -3,17 +3,15 @@ package ufrpe.deinfo.bcc.data;
 import com.google.gson.Gson;
 import ufrpe.deinfo.bcc.model.Caminhao;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RepositorioCaminhao implements IRepositorio<Caminhao> {
     private static RepositorioCaminhao instance;
-    private Set<Caminhao> repositorio;
+    private List<Caminhao> repositorio;
     private PersistenceGSON gson;
 
     private RepositorioCaminhao() {
-        repositorio = new HashSet<Caminhao>();
+        repositorio = new ArrayList<Caminhao>();
         gson = PersistenceGSON.getInstance();
     }
 
@@ -38,7 +36,7 @@ public class RepositorioCaminhao implements IRepositorio<Caminhao> {
             throw new IllegalArgumentException();
     }
 
-    public Collection<Caminhao> ler() {
+    public List<Caminhao> ler() {
         return repositorio;
 
     }

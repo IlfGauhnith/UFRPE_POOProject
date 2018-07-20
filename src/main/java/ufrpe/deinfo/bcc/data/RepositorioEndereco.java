@@ -2,16 +2,14 @@ package ufrpe.deinfo.bcc.data;
 
 import ufrpe.deinfo.bcc.model.Endereco;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RepositorioEndereco implements IRepositorio<Endereco> {
     private static RepositorioEndereco instance;
-    private Set<Endereco> repositorio;
+    private List<Endereco> repositorio;
 
     private RepositorioEndereco() {
-        repositorio = new HashSet<Endereco>();
+        repositorio = new ArrayList<>();
     }
 
     public static RepositorioEndereco getInstance() {
@@ -35,7 +33,7 @@ public class RepositorioEndereco implements IRepositorio<Endereco> {
             throw new IllegalArgumentException();
     }
 
-    public Collection<Endereco> ler() {
+    public List<Endereco> ler() {
         return repositorio;
     }
 

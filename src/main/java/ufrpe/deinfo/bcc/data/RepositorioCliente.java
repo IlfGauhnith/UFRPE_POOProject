@@ -2,16 +2,14 @@ package ufrpe.deinfo.bcc.data;
 
 import ufrpe.deinfo.bcc.model.Cliente;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RepositorioCliente implements IRepositorio<Cliente> {
     private static RepositorioCliente instance;
-    private Set<Cliente> repositorio;
+    private List<Cliente> repositorio;
 
     private RepositorioCliente() {
-        repositorio = new HashSet<Cliente>();
+        repositorio = new ArrayList<Cliente>();
     }
 
     public static RepositorioCliente getInstance() {
@@ -35,7 +33,7 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
             throw new IllegalArgumentException();
     }
 
-    public Collection<Cliente> ler() {
+    public List<Cliente> ler() {
         return repositorio;
     }
 

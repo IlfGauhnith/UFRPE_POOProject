@@ -2,16 +2,14 @@ package ufrpe.deinfo.bcc.data;
 
 import ufrpe.deinfo.bcc.model.Servico;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class RepositorioServico implements IRepositorio<Servico> {
     private static RepositorioServico instance;
-    private Set<Servico> repositorio;
+    private List<Servico> repositorio;
 
     private RepositorioServico() {
-        repositorio = new HashSet<Servico>();
+        repositorio = new ArrayList<>();
     }
 
     public static RepositorioServico getInstance() {
@@ -35,7 +33,7 @@ public class RepositorioServico implements IRepositorio<Servico> {
             throw new IllegalArgumentException();
     }
 
-    public Collection<Servico> ler() {
+    public List<Servico> ler() {
         return repositorio;
     }
 
