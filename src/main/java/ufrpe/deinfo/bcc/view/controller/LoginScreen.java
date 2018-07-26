@@ -7,13 +7,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import sun.applet.Main;
+import javafx.stage.Stage;
 import ufrpe.deinfo.bcc.controller.ControladorFuncionario;
 import ufrpe.deinfo.bcc.controller.ControladorLogin;
 import ufrpe.deinfo.bcc.model.Funcionario;
 
 public class LoginScreen {
 
+    private static Stage systemStage;
     @FXML
     private PasswordField pswdPswdField;
 
@@ -40,8 +41,10 @@ public class LoginScreen {
         String pswd = pswdPswdField.getText();
         String user = usuarioTextField.getText();
 
-        if(user.equalsIgnoreCase("elminster") && pswd.equalsIgnoreCase("moradin"))
+        if(user.equalsIgnoreCase("elminster") && pswd.equalsIgnoreCase("moradin")) {
+            MainApp.setPrimaryStage(systemStage);
             mainApp.showMenuMecanicoChefe();
+        }
         else if(controladorLogin.efetuarLogin(user, pswd)) {
             Funcionario f = new Funcionario(user, pswd);
             int cargo = controladorFuncionario.obterCargoFuncionario(f);
@@ -61,16 +64,20 @@ public class LoginScreen {
 
     }
 
+    public static void setPrimaryStage(Stage stage) {
+        systemStage = stage;
+    }
+
     @FXML
-    void pswdOnKeyPressed(KeyEvent event) {
+    void pswdKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER)
             entrarOnAction(new ActionEvent());
     }
 
     @FXML
-    void usuarioOnKeyPressed(KeyEvent event) {
+    void usuarioKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER)
             entrarOnAction(new ActionEvent());
     }
-
 }
+

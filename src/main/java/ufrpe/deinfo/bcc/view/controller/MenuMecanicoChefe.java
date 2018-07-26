@@ -4,8 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.stage.Stage;
 
 public class MenuMecanicoChefe {
+
+    private static Stage systemStage;
+    private static MainApp mainApp;
 
     @FXML
     private MenuItem cadastrarCaminhaoMenuItem;
@@ -49,6 +53,14 @@ public class MenuMecanicoChefe {
     @FXML
     private MenuItem sistemaSairMenuItem;
 
+    public void initialize() {
+        mainApp = MainApp.getInstance();
+    }
+
+    public static void setPrimaryStage(Stage stage) {
+        systemStage = stage;
+    }
+
     @FXML
     void cadastrarCaminhaoOnAction(ActionEvent event) {
 
@@ -56,12 +68,14 @@ public class MenuMecanicoChefe {
 
     @FXML
     void cadastrarClienteFOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        mainApp.showCadastroClienteFisico();
     }
 
     @FXML
     void cadastrarClienteJOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        mainApp.showCadastroClienteJuridico();
     }
 
     @FXML

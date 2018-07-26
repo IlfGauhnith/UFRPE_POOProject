@@ -14,7 +14,7 @@ public class ControladorCliente {
         repositorioCliente = RepositorioCliente.getInstance();
     }
 
-    public ControladorCliente getInstance() {
+    public static ControladorCliente getInstance() {
         if(instance == null)
             instance = new ControladorCliente();
 

@@ -10,19 +10,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="529.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.CadastrarClienteFisico">
+<AnchorPane prefHeight="529.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.CadastrarClienteJuridico">
    <children>
       <TextField fx:id="nomeTF" layoutX="14.0" layoutY="41.0" prefHeight="26.0" prefWidth="204.0" AnchorPane.topAnchor="30.0" />
       <TextField fx:id="cpfTF" layoutX="14.0" layoutY="85.0" prefHeight="26.0" prefWidth="204.0" AnchorPane.topAnchor="90.0" />
       <TextField fx:id="emailTF" layoutX="14.0" layoutY="135.0" prefHeight="26.0" prefWidth="204.0" AnchorPane.topAnchor="150.0" />
       <TextField fx:id="telTF" layoutX="14.0" layoutY="187.0" prefHeight="26.0" prefWidth="204.0" AnchorPane.topAnchor="210.0" />
-      <Label layoutX="14.0" layoutY="14.0" text="Nome">
+      <Label layoutX="14.0" layoutY="14.0" text="Razão Social">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="72.0" text="CPF">
+      <Label layoutX="14.0" layoutY="72.0" text="CNPJ">
          <font>
             <Font size="14.0" />
          </font>
@@ -79,18 +78,26 @@
          <children>
             <TableView fx:id="escolhaCaminhoesTable" layoutX="-3.0" prefHeight="236.0" prefWidth="415.0">
               <columns>
-                <TableColumn prefWidth="130.0" text="Modelo" />
-                <TableColumn prefWidth="116.0" text="Fabricante" />
-                  <TableColumn prefWidth="168.0" text="Placa" />
+                  <TableColumn prefWidth="75.0" text="Caminhões cadastrados">
+                     <columns>
+                      <TableColumn prefWidth="130.0" text="Modelo" />
+                      <TableColumn prefWidth="116.0" text="Fabricante" />
+                        <TableColumn prefWidth="168.0" text="Placa" />
+                     </columns>
+                  </TableColumn>
               </columns>
             </TableView>
          </children>
       </Pane>
       <TableView fx:id="caminhoesEscolhidosTable" layoutX="461.0" layoutY="293.0" prefHeight="236.0" prefWidth="415.0">
          <columns>
-            <TableColumn prefWidth="130.0" text="Modelo" />
-            <TableColumn prefWidth="116.0" text="Fabricante" />
-            <TableColumn prefWidth="168.0" text="Placa" />
+            <TableColumn prefWidth="75.0" text="Caminhões adicionados">
+               <columns>
+                  <TableColumn prefWidth="130.0" text="Modelo" />
+                  <TableColumn prefWidth="116.0" text="Fabricante" />
+                  <TableColumn prefWidth="168.0" text="Placa" />
+               </columns>
+            </TableColumn>
          </columns>
       </TableView>
       <Button fx:id="adicionarBttn" layoutX="467.0" layoutY="252.0" mnemonicParsing="false" onAction="#adicionarOnAction" text="Adicionar" />
