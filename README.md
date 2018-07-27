@@ -2,6 +2,7 @@
 Projeto de conclusão da disciplina Introdução a Programação 2. Trata-se de um sistema de administração para oficinas de caminhão.
 
 - Java1.8.0_172
+- gson2.8.5
 
 ## Funcionalidades: 
 - Gerenciamento dos caminhões em serviço
