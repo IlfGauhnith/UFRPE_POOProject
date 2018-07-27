@@ -24,36 +24,62 @@ public class ControladorCaminhao {
     }
 
     public void criar(String chassi, String placa, String modelo, String fabricante,
-                               int ano, Cliente dono) throws IllegalArgumentException {
+                               int ano, Cliente dono, long kilometragem) throws IllegalArgumentException {
+        if(chassi == null || chassi.length() != 17)
+            throw new IllegalArgumentException("O código de chassi deve conter 17 dígitos");
 
-        if(chassi == null || placa == null || modelo == null || fabricante == null || ano < 1900)
-            throw new IllegalArgumentException();
-        if(chassi.length() > 17)
-            throw new IllegalArgumentException();
-        if(placa.length() > 8)
-            throw new IllegalArgumentException();
-        if(dono == null)
-            throw new IllegalArgumentException();
+        else if(placa == null || placa.length() != 7)
+            throw new IllegalArgumentException("A placa deve conter 7 dígitos");
 
-        Caminhao caminhao = new Caminhao(chassi, placa, modelo, ano, fabricante, dono);
+        else if(modelo == null)
+            throw new IllegalArgumentException("Modelo inválido");
+
+        else if(fabricante == null)
+            throw new IllegalArgumentException("Fabricante inválido");
+
+        else if(ano < 1900)
+            throw new IllegalArgumentException("Ano inválido");
+
+        else if(dono == null)
+            throw new  IllegalArgumentException("Dono inválido");
+
+        else if(kilometragem < 0)
+            throw new IllegalArgumentException("Kilometragem não pode ser negativa");
+
+        Caminhao caminhao = new Caminhao(chassi, placa, modelo, ano, fabricante, dono, kilometragem);
 
         repositorioCaminhao.criar(caminhao);
     }
 
     public void criar(String chassi, String placa, String modelo, String fabricante,
-                              int ano, Cliente dono, LocalDate ultimaManutencao) throws IllegalArgumentException {
-        if(chassi == null || placa == null || modelo == null || fabricante == null || ano < 1900)
-            throw new IllegalArgumentException();
-        if(chassi.length() > 10)
-            throw new IllegalArgumentException();
-        if(placa.length() > 8)
-            throw new IllegalArgumentException();
-        if(dono == null)
-            throw new IllegalArgumentException();
-        if(ultimaManutencao == null)
-            throw new IllegalArgumentException();
+                              int ano, Cliente dono, LocalDate ultimaManutencao,
+                      long kilometragem) {
+        if(chassi == null || chassi.length() != 17)
+            throw new IllegalArgumentException("O código de chassi deve conter 17 dígitos");
 
-        Caminhao caminhao = new Caminhao(chassi, placa, modelo, ano, fabricante, ultimaManutencao, dono);
+        else if(placa == null || placa.length() != 7)
+            throw new IllegalArgumentException("A placa deve conter 7 dígitos");
+
+        else if(modelo == null)
+            throw new IllegalArgumentException("Modelo inválido");
+
+        else if(fabricante == null)
+            throw new IllegalArgumentException("Fabricante inválido");
+
+        else if(ano < 1900)
+            throw new IllegalArgumentException("Ano inválido");
+
+        else if(dono == null)
+            throw new  IllegalArgumentException("Dono inválido");
+
+        else if(ultimaManutencao == null)
+            throw new IllegalArgumentException("Data de última manutenção inválida");
+
+        else if(kilometragem < 0)
+            throw new IllegalArgumentException("Kilometragem não pode ser negativa");
+
+        Caminhao caminhao = new Caminhao(chassi, placa, modelo, ano, fabricante, ultimaManutencao,
+                dono, kilometragem);
 
         repositorioCaminhao.criar(caminhao);
     }

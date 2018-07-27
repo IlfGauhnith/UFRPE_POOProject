@@ -22,15 +22,17 @@ public class ControladorCliente {
     }
 
     public void criarClienteFisico(Endereco endereco, String email, String telefone, String nome,
-                                   String cpf) throws IllegalArgumentException {
-        if(endereco == null || email == null || telefone == null || nome == null || cpf == null)
-            throw new IllegalArgumentException();
-        if(!telefone.matches("[0-9]+"))
-            throw new IllegalArgumentException();
-        if(!cpf.matches("[0-9]+"))
-            throw new IllegalArgumentException();
-        if(!nome.matches("[a-z]+, [A-Z]+"))
-            throw new IllegalArgumentException();
+                                   String cpf) {
+        if(email == null)
+            throw new IllegalArgumentException("Email inválido");
+        else if(!telefone.matches("[0-9]+"))
+            throw new IllegalArgumentException("Telefone inválido. Apenas números são permitidos.");
+        else if(!cpf.matches("[0-9]+"))
+            throw new IllegalArgumentException("CPF inválido. Apenas números são permitidos");
+        else if(!nome.matches("^[a-zA-Z\\s]+$"))
+            throw new IllegalArgumentException("Nome inválido. Apenas letras são permitidas");
+        else if(endereco == null)
+            throw new IllegalArgumentException("Endereco inválido");
 
         Cliente clienteFisico = new ClienteFisico(endereco, email, telefone, nome, cpf);
         repositorioCliente.criar(clienteFisico);
@@ -38,13 +40,6 @@ public class ControladorCliente {
 
     public void criarClienteJuridico(Endereco endereco, String email, String telefone, String razaoSocial,
                                      String cnpj) throws IllegalArgumentException {
-        if(endereco == null || email == null || telefone == null || razaoSocial == null || cnpj == null)
-            throw new IllegalArgumentException();
-        if(!telefone.matches("[0-9]+"))
-            throw new IllegalArgumentException();
-        if(!cnpj.matches("[0-9]+"))
-            throw new IllegalArgumentException();
-
         Cliente clienteJuridico = new ClienteJuridico(endereco, email, telefone, cnpj, razaoSocial);
         repositorioCliente.criar(clienteJuridico);
     }

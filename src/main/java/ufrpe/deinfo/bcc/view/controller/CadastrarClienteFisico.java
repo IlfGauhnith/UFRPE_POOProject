@@ -4,12 +4,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import sun.applet.Main;
 import ufrpe.deinfo.bcc.controller.ControladorCaminhao;
 import ufrpe.deinfo.bcc.controller.ControladorCliente;
+import ufrpe.deinfo.bcc.controller.ControladorEndereco;
 import ufrpe.deinfo.bcc.model.Caminhao;
 
 import java.util.ArrayList;
@@ -84,11 +90,15 @@ public class CadastrarClienteFisico {
             "MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"};
     private ControladorCaminhao controladorCaminhao;
     private ControladorCliente controladorCliente;
+    private ControladorEndereco controladorEndereco;
 
     public void initialize() {
         mainApp = MainApp.getInstance();
         controladorCaminhao = ControladorCaminhao.getInstance();
         controladorCliente = ControladorCliente.getInstance();
+        controladorEndereco = ControladorEndereco.getInstance();
+
+
 
         List<String> ufsList = new ArrayList<>();
         for(int i = 0 ; i < listaUFs.length ; i++)
@@ -100,6 +110,11 @@ public class CadastrarClienteFisico {
 
     @FXML
     void adicionarOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cadastrarOnAction(ActionEvent event) {
         String nome = nomeTF.getText();
         String cpf = cpfTF.getText();
         String telefone = telTF.getText();
@@ -112,11 +127,23 @@ public class CadastrarClienteFisico {
         String cep = cepTF.getText();
         String uf = ufComboBox.getValue();
 
-    }
+        try {
+            controladorEndereco.criarEndereco("Brasil", uf, cidade, bairro, logradouro, numero, complemento,
+                    cep);
+        } catch (IllegalArgumentException ex) {
+            mainApp.showIllegalArgumentPopup(ex);
+            return;
+        }
 
-    @FXML
-    void cadastrarOnAction(ActionEvent event) {
-
+        try {
+            controladorCliente.criarClienteFisico(controladorEndereco.buscarPorCep(cep), email,
+                    telefone, nome, cpf);
+            mainApp.showOperacaoRelizadaPopup();
+            voltarOnAction(new ActionEvent());
+        } catch(IllegalArgumentException ex) {
+            mainApp.showIllegalArgumentPopup(ex);
+            return;
+        }
     }
 
     @FXML

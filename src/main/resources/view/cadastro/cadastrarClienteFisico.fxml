@@ -105,7 +105,6 @@
       <Button fx:id="voltarBttn" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#voltarOnAction" text="Voltar" />
       <Button fx:id="cadastrarBttn" layoutX="368.0" layoutY="489.0" mnemonicParsing="false" onAction="#cadastrarOnAction" text="Cadastrar" />
       <TextField fx:id="cepTF" layoutX="244.0" layoutY="323.0" prefHeight="26.0" prefWidth="204.0" />
-      <Label text="Label" />
       <Label layoutX="244.0" layoutY="307.0" text="CEP">
          <font>
             <Font size="14.0" />

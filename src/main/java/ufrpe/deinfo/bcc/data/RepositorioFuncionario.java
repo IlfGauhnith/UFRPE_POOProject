@@ -2,15 +2,20 @@ package ufrpe.deinfo.bcc.data;
 
 import ufrpe.deinfo.bcc.model.Funcionario;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 
 public class RepositorioFuncionario implements IRepositorio<Funcionario> {
     private static RepositorioFuncionario instance;
     private List<Funcionario> repositorio;
+    private PersistenceGSON gson;
 
     private RepositorioFuncionario() {
+        gson = PersistenceGSON.getInstance();
         repositorio = new ArrayList<>();
+        startData();
+        persist();
     }
 
     public static RepositorioFuncionario getInstance() {
@@ -40,6 +45,12 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario> {
     }
 
     public void persist() {
+        gson.persist(repositorio, "src/main/files/funcionario.txt");
+    }
 
+    @Override
+    public void startData() {
+        ArrayList<Funcionario> updatedRepo = (ArrayList<Funcionario>) gson.read("src/main/files/funcionario.txt");
+        repositorio = updatedRepo;
     }
 }

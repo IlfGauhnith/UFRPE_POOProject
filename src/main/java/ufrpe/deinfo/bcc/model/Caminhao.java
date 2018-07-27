@@ -11,19 +11,21 @@ public class Caminhao {
     private LocalDate ultimaManutencao;
     private boolean emServico = false;
     private Cliente dono;
+    private long kilometragem;
 
     public Caminhao(String chassi, String placa, String modelo, int ano, String fabricante,
-                    Cliente dono) throws IllegalArgumentException {
+                    Cliente dono, long kilometragem) throws IllegalArgumentException {
         this.chassi = chassi;
         this.placa = placa;
         this.modelo = modelo;
         this.ano = ano;
         this.fabricante = fabricante;
         this.dono = dono;
+        this.kilometragem = kilometragem;
     }
 
     public Caminhao(String chassi, String placa, String modelo, int ano, String fabricante,
-                    LocalDate ultimaManutencao, Cliente dono) {
+                    LocalDate ultimaManutencao, Cliente dono, long kilometragem) {
         this.chassi = chassi;
         this.placa = placa;
         this.modelo = modelo;
@@ -31,6 +33,7 @@ public class Caminhao {
         this.fabricante = fabricante;
         this.ultimaManutencao = ultimaManutencao;
         this.dono = dono;
+        this.kilometragem = kilometragem;
     }
 
     public Caminhao(String chassi, String placa) throws IllegalArgumentException {

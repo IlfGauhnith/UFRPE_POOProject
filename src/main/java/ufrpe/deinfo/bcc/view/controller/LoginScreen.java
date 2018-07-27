@@ -15,6 +15,10 @@ import ufrpe.deinfo.bcc.model.Funcionario;
 public class LoginScreen {
 
     private static Stage systemStage;
+
+    @FXML
+    private Button sairBtn;
+
     @FXML
     private PasswordField pswdPswdField;
 
@@ -78,6 +82,11 @@ public class LoginScreen {
     void usuarioKeyPressed(KeyEvent event) {
         if(event.getCode() == KeyCode.ENTER)
             entrarOnAction(new ActionEvent());
+    }
+
+    @FXML
+    void sairOnAction(ActionEvent event) {
+        systemStage.close();
     }
 }
 

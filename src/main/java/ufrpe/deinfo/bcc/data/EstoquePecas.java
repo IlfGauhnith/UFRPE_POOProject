@@ -2,15 +2,21 @@ package ufrpe.deinfo.bcc.data;
 
 import ufrpe.deinfo.bcc.model.Peca;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class EstoquePecas {
-    private Set<Peca> estoquePecas;
+    private List<Peca> estoquePecas;
     private static EstoquePecas instance;
+    private PersistenceGSON gson;
 
     private EstoquePecas() {
-        estoquePecas = new HashSet<Peca>();
+        estoquePecas = new ArrayList<Peca>();
+        gson = PersistenceGSON.getInstance();
+        startData();
+        persist();;
     }
 
     public static EstoquePecas getInstance() {
@@ -62,5 +68,16 @@ public class EstoquePecas {
         }
 
         peca.setPrecoUnitario(preco);
+    }
+
+    public void persist()
+    {
+        gson.persist(estoquePecas, "src/main/files/estoquePecas.txt");
+    }
+
+    public void startData()
+    {
+        ArrayList<Peca> updatedRepo = (ArrayList<Peca>) gson.read("src/main/files/estoquePecas.txt");
+        estoquePecas = updatedRepo;
     }
 }

@@ -22,6 +22,10 @@ public class Endereco {
         this.cep = cep;
     }
 
+    public Endereco(String cep) {
+        this.cep = cep;
+    }
+
     //Faz sentido utilizar exceptions para botar em prática de fato o encapsulamento?
 
     public String getPais() {

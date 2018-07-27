@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="322.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.cadastrarCaminhao">
+<AnchorPane prefHeight="322.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.CadastrarCaminhao">
    <children>
       <Pane prefHeight="351.0" prefWidth="440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -38,13 +37,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="AnoChoiceBox" layoutX="234.0" layoutY="47.0" prefHeight="26.0" prefWidth="170.0" />
             <Label layoutX="234.0" layoutY="31.0" text="Ano">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="233.0" layoutY="108.0" prefHeight="26.0" prefWidth="170.0" />
+            <TextField fx:id="kilometragemTF" layoutX="233.0" layoutY="108.0" prefHeight="26.0" prefWidth="170.0" />
             <Label layoutX="234.0" layoutY="92.0" text="Kilometragem">
                <font>
                   <Font size="14.0" />
@@ -63,6 +61,8 @@
                </font>
             </Label>
             <Button fx:id="cadastrarBttn" layoutX="324.0" layoutY="281.0" mnemonicParsing="false" onAction="#cadastrarBtnPressionado" text="Cadastrar" />
+            <ComboBox fx:id="anoComboBox" layoutX="233.0" layoutY="47.0" prefHeight="26.0" prefWidth="170.0" />
+            <Button fx:id="voltarBttn" layoutX="11.0" layoutY="281.0" mnemonicParsing="false" onAction="#voltarBtnPressionado" text="Voltar" />
          </children></Pane>
    </children>
 </AnchorPane>

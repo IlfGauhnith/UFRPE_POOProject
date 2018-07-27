@@ -7,9 +7,13 @@ import java.util.*;
 public class RepositorioCliente implements IRepositorio<Cliente> {
     private static RepositorioCliente instance;
     private List<Cliente> repositorio;
+    private PersistenceGSON gson;
 
     private RepositorioCliente() {
         repositorio = new ArrayList<Cliente>();
+        gson = PersistenceGSON.getInstance();
+        startData();
+        persist();
     }
 
     public static RepositorioCliente getInstance() {
@@ -38,6 +42,12 @@ public class RepositorioCliente implements IRepositorio<Cliente> {
     }
 
     public void persist() {
+        gson.persist(repositorio, "src/main/files/cliente.txt");
+    }
 
+    @Override
+    public void startData() {
+        ArrayList<Cliente> updatedRepo = (ArrayList<Cliente>) gson.read("src/main/files/cliente.txt");
+        repositorio = updatedRepo;
     }
 }

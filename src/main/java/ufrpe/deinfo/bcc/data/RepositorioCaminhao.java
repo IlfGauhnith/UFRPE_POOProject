@@ -3,6 +3,7 @@ package ufrpe.deinfo.bcc.data;
 import com.google.gson.Gson;
 import ufrpe.deinfo.bcc.model.Caminhao;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class RepositorioCaminhao implements IRepositorio<Caminhao> {
@@ -13,6 +14,8 @@ public class RepositorioCaminhao implements IRepositorio<Caminhao> {
     private RepositorioCaminhao() {
         repositorio = new ArrayList<Caminhao>();
         gson = PersistenceGSON.getInstance();
+        startData();
+        persist();
     }
 
     public static RepositorioCaminhao getinstance() {
@@ -42,6 +45,12 @@ public class RepositorioCaminhao implements IRepositorio<Caminhao> {
     }
 
     public void persist() {
-        gson.persist(repositorio, "/home/lucas/Desktop/BCC_UFRPE/UFRPE_POOProject/src/main/files/caminhao.json");
+        gson.persist(repositorio, "src/main/files/caminhao.txt");
+    }
+
+    @Override
+    public void startData() {
+        ArrayList<Caminhao> updatedRepo = (ArrayList<Caminhao>) gson.read("src/main/files/caminhao.txt");
+        repositorio = updatedRepo;
     }
 }
