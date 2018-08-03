@@ -8,14 +8,10 @@ import java.util.*;
 public class RepositorioEndereco implements IRepositorio<Endereco> {
     private static RepositorioEndereco instance;
     private List<Endereco> repositorio;
-    private PersistenceGSON gson;
 
     private RepositorioEndereco()
     {
-        gson = PersistenceGSON.getInstance();
         repositorio = new ArrayList<>();
-        startData();
-        persist();
     }
 
     public static RepositorioEndereco getInstance() {
@@ -41,15 +37,5 @@ public class RepositorioEndereco implements IRepositorio<Endereco> {
 
     public List<Endereco> ler() {
         return repositorio;
-    }
-
-    public void persist() {
-        gson.persist(repositorio, "src/main/files/endereco.txt");
-    }
-
-    @Override
-    public void startData() {
-        ArrayList<Endereco> updatedRepo = (ArrayList<Endereco>) gson.read("src/main/files/endereco.txt");
-        repositorio = updatedRepo;
     }
 }

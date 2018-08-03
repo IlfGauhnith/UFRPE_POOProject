@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import ufrpe.deinfo.bcc.controller.ControladorCaminhao;
+import ufrpe.deinfo.bcc.controller.ControladorCliente;
 import ufrpe.deinfo.bcc.model.Cliente;
 
 import java.time.LocalDate;
@@ -35,7 +36,7 @@ public class CadastrarCaminhao {
     private DatePicker ultManDatePicker;
 
     @FXML
-    private ComboBox<Cliente> donoComboBox;
+    private ComboBox<String> donoComboBox;
 
     @FXML
     private Button cadastrarBttn;
@@ -50,12 +51,13 @@ public class CadastrarCaminhao {
     private static MainApp mainApp;
 
     private static ControladorCaminhao controladorCaminhao;
+    private static ControladorCliente controladorCliente;
     private static Stage systemStage;
 
     public void initialize() {
         controladorCaminhao = ControladorCaminhao.getInstance();
         mainApp = MainApp.getInstance();
-
+        controladorCliente = ControladorCliente.getInstance();
 
 
         List<String> listAnos = new ArrayList<>();
@@ -64,6 +66,14 @@ public class CadastrarCaminhao {
 
         ObservableList<String> anosOBSL = FXCollections.observableArrayList(listAnos);
         anoComboBox.setItems(anosOBSL);
+
+
+
+        List<String> listClientes = new ArrayList<>();
+        listClientes = controladorCliente.listarNomeClientes();
+
+        ObservableList<String> clientesOBSL = FXCollections.observableArrayList(listClientes);
+        donoComboBox.setItems(clientesOBSL);
     }
 
     @FXML
@@ -73,17 +83,17 @@ public class CadastrarCaminhao {
         String chassi = chassiTextField.getText();
         String placa = placaTextField.getText();
         String ano = anoComboBox.getValue();
-        Cliente dono = donoComboBox.getValue();
+        String nomeDono = donoComboBox.getValue();
         LocalDate data = ultManDatePicker.getValue();
         long kilometragem = Long.parseLong(kilometragemTF.getText());
 
         try {
             if(data == null)
                 controladorCaminhao.criar(chassi, placa, modelo, fabricante, Integer.parseInt(ano),
-                        dono, kilometragem);
+                        controladorCliente.buscarPorNome(nomeDono), kilometragem);
             else
                 controladorCaminhao.criar(chassi, placa, modelo, fabricante, Integer.parseInt(ano),
-                        dono, data, kilometragem);
+                        controladorCliente.buscarPorNome(nomeDono), data, kilometragem);
 
             mainApp.showOperacaoRelizadaPopup();
             voltarBtnPressionado(new ActionEvent());

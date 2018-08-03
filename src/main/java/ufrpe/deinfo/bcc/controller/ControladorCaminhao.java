@@ -7,13 +7,16 @@ import ufrpe.deinfo.bcc.model.Cliente;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorCaminhao {
     private RepositorioCaminhao repositorioCaminhao;
     private static ControladorCaminhao instance;
+    private static ControladorCliente controladorCliente;
 
     private ControladorCaminhao(){
         repositorioCaminhao = RepositorioCaminhao.getinstance();
+        controladorCliente = ControladorCliente.getInstance();
     }
 
     public static ControladorCaminhao getInstance() {
@@ -82,6 +85,7 @@ public class ControladorCaminhao {
                 dono, kilometragem);
 
         repositorioCaminhao.criar(caminhao);
+        controladorCliente.adicionarAFrota(dono, caminhao);
     }
 
     public void remover(String chassi, String placa) throws IllegalArgumentException {
@@ -93,12 +97,34 @@ public class ControladorCaminhao {
         repositorioCaminhao.deletar(caminhao);
     }
 
-    public ArrayList<Caminhao> buscarCaminhao(String chassi, String placa, String modelo, int ano,
-                                              String fabricante, Cliente dono) {
-        return new ArrayList();
+    public Caminhao buscarPorChassi(String chassi) {
+        Caminhao c = new Caminhao(chassi);
+
+        for(Caminhao caminhao : repositorioCaminhao.ler())
+            if(caminhao.getChassi().equals(c.getChassi()))
+                return caminhao;
+
+        return null;
     }
 
     public ArrayList<Caminhao> buscarTodosCaminhoes() {
         return (ArrayList) repositorioCaminhao.ler();
     }
+
+    public List<String> listarChassis() {
+        List<String> chassis = new ArrayList<>();
+        for(Caminhao c : repositorioCaminhao.ler())
+            chassis.add(c.getChassi());
+
+        return chassis;
+    }
+
+    public Cliente buscarDono(Caminhao caminhao) {
+        for(Caminhao c : repositorioCaminhao.ler())
+            if(c.equals(caminhao))
+                return c.getDono();
+
+        return null;
+    }
+
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="586.0" prefWidth="528.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.CadastrarServico">
+   <children>
+      <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="535.0" prefWidth="528.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Serviço">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="511.0" prefWidth="528.0">
+                     <children>
+                        <ComboBox fx:id="caminhaoComboBox" layoutX="14.0" layoutY="32.0" onAction="#caminhaoComboBoxOnAction" prefHeight="26.0" prefWidth="181.0" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Caminhao">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="clienteRelacionadoTxt" layoutX="207.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente Relacionado" wrappingWidth="162.7294921875">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <ComboBox fx:id="mecanicoComboBox" layoutX="14.0" layoutY="89.0" prefHeight="26.0" prefWidth="182.0" />
+                        <Label layoutX="14.0" layoutY="70.0" text="Mecânico Responsável">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="kilometragemTF" layoutX="14.0" layoutY="147.0" prefHeight="26.0" prefWidth="182.0" />
+                        <Label layoutX="15.0" layoutY="128.0" text="Kilometragem Atual">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dataEntradaDatePicker" layoutX="14.0" layoutY="203.0" prefHeight="20.0" prefWidth="182.0" />
+                        <Label layoutX="14.0" layoutY="184.0" text="Data de Entrada">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="saindaEstimDatePicker" layoutX="322.0" layoutY="89.0" prefHeight="26.0" prefWidth="192.0" />
+                        <Label layoutX="322.0" layoutY="70.0" text="Data de Saída Estimada">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="descTA" layoutX="15.0" layoutY="286.0" prefHeight="200.0" prefWidth="498.0" />
+                        <Label layoutX="175.0" layoutY="260.0" text="Descrição do Serviço">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Peças">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="pecasDisponiveisTV" layoutY="41.0" onMouseClicked="#pecaDispMouseClicked" prefHeight="160.0" prefWidth="528.0" AnchorPane.bottomAnchor="301.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="41.0">
+                          <columns>
+                            <TableColumn fx:id="refPecaDispTC" editable="false" prefWidth="112.0" text="Referência" />
+                            <TableColumn fx:id="precoPecaDispTC" editable="false" prefWidth="94.0" text="Preço" />
+                              <TableColumn fx:id="estoqPecaDispTC" prefWidth="110.0" text="Estoque" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label layoutX="197.0" layoutY="22.0" text="Peças Disponíveis">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="pecasSelecionadasTV" layoutX="1.0" layoutY="277.0" prefHeight="160.0" prefWidth="528.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="277.0">
+                          <columns>
+                            <TableColumn fx:id="refPecaSelecTC" editable="false" prefWidth="112.0" text="Referência" />
+                            <TableColumn fx:id="precoPecaSelecTC" editable="false" prefWidth="94.0" text="Preço" />
+                              <TableColumn fx:id="estoqPecaSelecTC" editable="false" prefWidth="110.0" text="Estoque" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label layoutX="190.0" layoutY="258.0" text="Peças Selecionadas">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="removerBtn" layoutX="14.0" layoutY="225.0" mnemonicParsing="false" onAction="#removerOnAction" text="Remover" />
+                        <Button fx:id="adicionarBtn" layoutX="420.0" layoutY="225.0" mnemonicParsing="false" onAction="#adicionarOnAction" text="Adicionar" />
+                        <Label layoutX="14.0" layoutY="472.0" text="Custo Total: ">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Text fx:id="custoTotaltxt" layoutX="131.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="56.99999284744263" />
+                        <ComboBox fx:id="qtdAadcComboBox" layoutX="313.0" layoutY="225.0" prefHeight="26.0" prefWidth="97.0" />
+                        <Label layoutX="313.0" layoutY="209.0" text="Quantidade" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="voltarBtn" layoutX="14.0" layoutY="546.0" mnemonicParsing="false" onAction="#voltarOnAction" text="Voltar" />
+      <Button fx:id="confirmarBtn" layoutX="431.0" layoutY="546.0" mnemonicParsing="false" onAction="#confirmarOnAction" text="Confirmar" />
+   </children>
+</AnchorPane>

@@ -3,7 +3,7 @@ package ufrpe.deinfo.bcc.model;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class Cliente {
+public class Cliente {
     private Endereco endereco;
     private String email;
     private String telefone;

@@ -3,11 +3,11 @@ package ufrpe.deinfo.bcc.model;
 public class Funcionario {
     private String nome;
     private String cod;
-    private int cargo;
+    private String cargo;
     private String login;
     private String senha;
 
-    public Funcionario(String nome, String cod, int cargo, String login, String senha) {
+    public Funcionario(String nome, String cod, String cargo, String login, String senha) {
         this.nome = nome;
         this.cod = cod;
         this.cargo = cargo;
@@ -38,11 +38,11 @@ public class Funcionario {
         this.cod = cod;
     }
 
-    public int getCargo() {
+    public String getCargo() {
         return cargo;
     }
 
-    public void setCargo(int cargo) {
+    public void setCargo(String cargo) {
         this.cargo = cargo;
     }
 

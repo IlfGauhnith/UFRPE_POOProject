@@ -7,6 +7,4 @@ public interface IRepositorio<T> {
     void criar(T o);
     void deletar(T o);
     List<T> ler();
-    void persist();
-    void startData();
     }
