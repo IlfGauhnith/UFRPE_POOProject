@@ -4,14 +4,11 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="529.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.CadastrarClienteFisico">
+<AnchorPane prefHeight="529.0" prefWidth="461.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.CadastrarClienteFisico">
    <children>
       <TextField fx:id="nomeTF" layoutX="14.0" layoutY="41.0" prefHeight="26.0" prefWidth="204.0" AnchorPane.topAnchor="30.0" />
       <TextField fx:id="cpfTF" layoutX="14.0" layoutY="85.0" prefHeight="26.0" prefWidth="204.0" AnchorPane.topAnchor="90.0" />
@@ -73,35 +70,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Separator layoutX="459.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="464.0" prefHeight="236.0" prefWidth="409.0">
-         <children>
-            <TableView fx:id="escolhaCaminhoesTable" layoutX="-3.0" prefHeight="236.0" prefWidth="415.0">
-              <columns>
-                  <TableColumn prefWidth="75.0" text="Caminhões cadastrados">
-                     <columns>
-                      <TableColumn prefWidth="130.0" text="Modelo" />
-                      <TableColumn prefWidth="116.0" text="Fabricante" />
-                        <TableColumn prefWidth="168.0" text="Placa" />
-                     </columns>
-                  </TableColumn>
-              </columns>
-            </TableView>
-         </children>
-      </Pane>
-      <TableView fx:id="caminhoesEscolhidosTable" layoutX="461.0" layoutY="293.0" prefHeight="236.0" prefWidth="415.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="Caminhões adicionados">
-               <columns>
-                  <TableColumn prefWidth="130.0" text="Modelo" />
-                  <TableColumn prefWidth="116.0" text="Fabricante" />
-                  <TableColumn prefWidth="168.0" text="Placa" />
-               </columns>
-            </TableColumn>
-         </columns>
-      </TableView>
-      <Button fx:id="adicionarBttn" layoutX="467.0" layoutY="252.0" mnemonicParsing="false" onAction="#adicionarOnAction" text="Adicionar" />
-      <Button fx:id="removerBttn" layoutX="579.0" layoutY="252.0" mnemonicParsing="false" onAction="#removerOnAction" text="Remover" />
       <Button fx:id="voltarBttn" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#voltarOnAction" text="Voltar" />
       <Button fx:id="cadastrarBttn" layoutX="368.0" layoutY="489.0" mnemonicParsing="false" onAction="#cadastrarOnAction" text="Cadastrar" />
       <TextField fx:id="cepTF" layoutX="244.0" layoutY="323.0" prefHeight="26.0" prefWidth="204.0" />

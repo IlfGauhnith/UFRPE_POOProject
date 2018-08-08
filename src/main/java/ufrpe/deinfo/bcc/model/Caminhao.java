@@ -43,6 +43,10 @@ public class Caminhao {
         this.placa = placa;
     }
 
+    public Caminhao(String chassi) {
+        this.chassi = chassi;
+    }
+
     public String getChassi() {
         return chassi;
     }
@@ -97,6 +101,10 @@ public class Caminhao {
 
     public void setEmServico(boolean emServico) {
         this.emServico = emServico;
+    }
+
+    public Cliente getDono() {
+        return dono;
     }
 
     @Override

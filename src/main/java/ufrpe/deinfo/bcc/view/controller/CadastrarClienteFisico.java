@@ -54,31 +54,10 @@ public class CadastrarClienteFisico {
     private TextField numTF11;
 
     @FXML
-    private TableView<Caminhao> escolhaCaminhoesTable;
-
-    @FXML
-    private TableView<Caminhao> caminhoesEscolhidosTable;
-
-    @FXML
-    private Button adicionarBttn;
-
-    @FXML
-    private Button removerBttn;
-
-    @FXML
     private Button voltarBttn;
 
     @FXML
     private Button cadastrarBttn;
-
-    @FXML
-    private TableColumn<Caminhao, String> tableColumnFabricante;
-
-    @FXML
-    private TableColumn<Caminhao, String> tableColumnModelo;
-
-    @FXML
-    private TableColumn<Caminhao, String> tableColumnPlaca;
 
     @FXML
     private TextField cepTF;
@@ -88,13 +67,11 @@ public class CadastrarClienteFisico {
 
     private final String[] listaUFs = {"AC","AL","AP","AM","BA","CE","DF","ES","GO",
             "MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"};
-    private ControladorCaminhao controladorCaminhao;
     private ControladorCliente controladorCliente;
     private ControladorEndereco controladorEndereco;
 
     public void initialize() {
         mainApp = MainApp.getInstance();
-        controladorCaminhao = ControladorCaminhao.getInstance();
         controladorCliente = ControladorCliente.getInstance();
         controladorEndereco = ControladorEndereco.getInstance();
 
@@ -106,11 +83,6 @@ public class CadastrarClienteFisico {
 
         ObservableList<String> ufOBSList = FXCollections.observableArrayList(ufsList);
         ufComboBox.setItems(ufOBSList);
-    }
-
-    @FXML
-    void adicionarOnAction(ActionEvent event) {
-
     }
 
     @FXML
@@ -147,11 +119,6 @@ public class CadastrarClienteFisico {
     }
 
     @FXML
-    void removerOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void voltarOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
         mainApp.showMenuMecanicoChefe();
@@ -160,5 +127,4 @@ public class CadastrarClienteFisico {
     public static void setPrimaryStage(Stage stage) {
         systemStage = stage;
     }
-
 }

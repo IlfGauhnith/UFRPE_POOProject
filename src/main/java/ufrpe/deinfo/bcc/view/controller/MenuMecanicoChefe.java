@@ -5,10 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import sun.applet.Main;
-import ufrpe.deinfo.bcc.controller.ControladorRepositorio;
-import ufrpe.deinfo.bcc.data.IRepositorio;
-import ufrpe.deinfo.bcc.data.RepositorioCaminhao;
 
 public class MenuMecanicoChefe {
 
@@ -85,17 +81,20 @@ public class MenuMecanicoChefe {
 
     @FXML
     void cadastrarFuncionarioOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        mainApp.showCadastroFuncionario();
     }
 
     @FXML
     void cadastrarPecaOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        mainApp.showCadastroPeca();
     }
 
     @FXML
     void cadastrarServicoOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        mainApp.showCadastroServico();
     }
 
     @FXML
@@ -120,8 +119,6 @@ public class MenuMecanicoChefe {
 
     @FXML
     void sairOnAction(ActionEvent event) {
-        ControladorRepositorio controladorRepositorio = ControladorRepositorio.getInstance();
-        controladorRepositorio.persistAll();
         systemStage.close();
     }
 
@@ -132,7 +129,8 @@ public class MenuMecanicoChefe {
 
     @FXML
     void trocarUsuarioOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        mainApp.showLoginScreen();
     }
 
 }

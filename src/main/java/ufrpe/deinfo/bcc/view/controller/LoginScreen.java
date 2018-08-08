@@ -51,16 +51,16 @@ public class LoginScreen {
         }
         else if(controladorLogin.efetuarLogin(user, pswd)) {
             Funcionario f = new Funcionario(user, pswd);
-            int cargo = controladorFuncionario.obterCargoFuncionario(f);
+            String cargo = controladorFuncionario.obterCargoFuncionario(f);
 
             switch (cargo) {
-                case (1) : {
+                case ("Mecanico Chefe") : {
                     mainApp.showMenuMecanicoChefe();
                 }
-                case(2) : {
+                case("Mecanico Assistente") : {
                     mainApp.showMenuAssistenteMecanico();
                 }
-                case(-1) : {
+                case("") : {
 
                 }
             }

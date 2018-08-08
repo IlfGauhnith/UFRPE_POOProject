@@ -1,1 +1,0 @@
-[{"pais":"Brasil","uf":"GO","cidade":"Shadow Dale","bairro":"River fox","logradouro":"dwarf axe","numero":"123","complemento":"wea","cep":"12345678"},{"pais":"Brasil","uf":"AM","cidade":"Menzoberranzan","bairro":"Nashezbaernon","logradouro":"Northdark","numero":"12332","complemento":"2dhauw","cep":"12365482"}]
