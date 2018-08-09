@@ -1,36 +1,28 @@
-package ufrpe.deinfo.bcc.view.controller;
+package ufrpe.deinfo.bcc.view.controller.cadastro;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sun.applet.Main;
-import ufrpe.deinfo.bcc.controller.ControladorCaminhao;
 import ufrpe.deinfo.bcc.controller.ControladorCliente;
 import ufrpe.deinfo.bcc.controller.ControladorEndereco;
-import ufrpe.deinfo.bcc.model.Caminhao;
+import ufrpe.deinfo.bcc.model.Funcionario;
+import ufrpe.deinfo.bcc.view.controller.MainApp;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CadastrarClienteFisico {
-
-    private static MainApp mainApp;
-    private static Stage systemStage;
+public class CadastrarClienteJuridico {
 
     @FXML
-    private TextField nomeTF;
+    private TextField RazaoSocialTF;
 
     @FXML
-    private TextField cpfTF;
+    private TextField cnpjTF;
 
     @FXML
     private TextField emailTF;
@@ -65,17 +57,18 @@ public class CadastrarClienteFisico {
     @FXML
     private ComboBox<String> ufComboBox;
 
-    private final String[] listaUFs = {"AC","AL","AP","AM","BA","CE","DF","ES","GO",
-            "MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"};
+    private MainApp mainApp;
     private ControladorCliente controladorCliente;
     private ControladorEndereco controladorEndereco;
+    private final String[] listaUFs = {"AC","AL","AP","AM","BA","CE","DF","ES","GO",
+            "MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"};
+    private static Stage systemStage;
+    private static Funcionario funcionarioCorrente;
 
     public void initialize() {
         mainApp = MainApp.getInstance();
-        controladorCliente = ControladorCliente.getInstance();
         controladorEndereco = ControladorEndereco.getInstance();
-
-
+        controladorCliente = ControladorCliente.getInstance();
 
         List<String> ufsList = new ArrayList<>();
         for(int i = 0 ; i < listaUFs.length ; i++)
@@ -87,8 +80,8 @@ public class CadastrarClienteFisico {
 
     @FXML
     void cadastrarOnAction(ActionEvent event) {
-        String nome = nomeTF.getText();
-        String cpf = cpfTF.getText();
+        String razaoSocial = RazaoSocialTF.getText();
+        String cnpj = cnpjTF.getText();
         String telefone = telTF.getText();
         String email = emailTF.getText();
         String cidade = cidadeTF1.getText();
@@ -108,11 +101,11 @@ public class CadastrarClienteFisico {
         }
 
         try {
-            controladorCliente.criarClienteFisico(controladorEndereco.buscarPorCep(cep), email,
-                    telefone, nome, cpf);
+            controladorCliente.criarClienteJuridico(controladorEndereco.buscarPorCep(cep), email,
+                    telefone, razaoSocial, cnpj);
             mainApp.showOperacaoRelizadaPopup();
             voltarOnAction(new ActionEvent());
-        } catch(IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ex) {
             mainApp.showIllegalArgumentPopup(ex);
             return;
         }
@@ -121,10 +114,15 @@ public class CadastrarClienteFisico {
     @FXML
     void voltarOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showMenuMecanicoChefe();
     }
 
     public static void setPrimaryStage(Stage stage) {
         systemStage = stage;
+    }
+
+    public static void setFuncionarioCorrente(Funcionario funcionarioCorrente) {
+        CadastrarClienteJuridico.funcionarioCorrente = funcionarioCorrente;
     }
 }

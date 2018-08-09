@@ -1,4 +1,4 @@
-package ufrpe.deinfo.bcc.view.controller;
+package ufrpe.deinfo.bcc.view.controller.cadastro;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import ufrpe.deinfo.bcc.controller.ControladorCaminhao;
 import ufrpe.deinfo.bcc.controller.ControladorCliente;
 import ufrpe.deinfo.bcc.model.Cliente;
+import ufrpe.deinfo.bcc.model.Funcionario;
+import ufrpe.deinfo.bcc.view.controller.MainApp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -53,6 +55,7 @@ public class CadastrarCaminhao {
     private static ControladorCaminhao controladorCaminhao;
     private static ControladorCliente controladorCliente;
     private static Stage systemStage;
+    private static Funcionario funcionarioCorrente;
 
     public void initialize() {
         controladorCaminhao = ControladorCaminhao.getInstance();
@@ -106,10 +109,15 @@ public class CadastrarCaminhao {
     @FXML
     void voltarBtnPressionado(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showMenuMecanicoChefe();
     }
 
     public static void setPrimaryStage(Stage stage) {
         systemStage = stage;
+    }
+
+    public static void setFuncionarioCorrente(Funcionario funcionarioCorrente) {
+        CadastrarCaminhao.funcionarioCorrente = funcionarioCorrente;
     }
 }

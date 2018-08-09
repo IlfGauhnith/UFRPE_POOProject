@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="251.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.CadastrarFuncionario">
+<AnchorPane prefHeight="251.0" prefWidth="463.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.cadastro.CadastrarFuncionario">
    <children>
       <TextField fx:id="nomeTF" layoutX="14.0" layoutY="37.0" prefHeight="26.0" prefWidth="214.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="30.0" />
       <Label layoutX="14.0" layoutY="14.0" text="Nome completo" AnchorPane.topAnchor="12.0">

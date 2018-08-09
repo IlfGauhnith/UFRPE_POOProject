@@ -1,15 +1,18 @@
-package ufrpe.deinfo.bcc.view.controller;
+package ufrpe.deinfo.bcc.view.controller.menu;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import ufrpe.deinfo.bcc.model.Funcionario;
+import ufrpe.deinfo.bcc.view.controller.MainApp;
 
 public class MenuMecanicoChefe {
 
     private static Stage systemStage;
     private static MainApp mainApp;
+    private static Funcionario funcionarioCorrente;
 
     @FXML
     private MenuItem cadastrarCaminhaoMenuItem;
@@ -64,36 +67,42 @@ public class MenuMecanicoChefe {
     @FXML
     void cadastrarCaminhaoOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showCadastroCaminhao();
     }
 
     @FXML
     void cadastrarClienteFOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showCadastroClienteFisico();
     }
 
     @FXML
     void cadastrarClienteJOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showCadastroClienteJuridico();
     }
 
     @FXML
     void cadastrarFuncionarioOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showCadastroFuncionario();
     }
 
     @FXML
     void cadastrarPecaOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showCadastroPeca();
     }
 
     @FXML
     void cadastrarServicoOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showCadastroServico();
     }
 
@@ -114,7 +123,9 @@ public class MenuMecanicoChefe {
 
     @FXML
     void relatorioServicoOnAction(ActionEvent event) {
-
+        MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
+        mainApp.showRelatorioServico();
     }
 
     @FXML
@@ -133,4 +144,11 @@ public class MenuMecanicoChefe {
         mainApp.showLoginScreen();
     }
 
+    public static Funcionario getFuncionarioCorrente() {
+        return funcionarioCorrente;
+    }
+
+    public static void setFuncionarioCorrente(Funcionario funcionarioCorrente) {
+        MenuMecanicoChefe.funcionarioCorrente = funcionarioCorrente;
+    }
 }

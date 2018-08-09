@@ -1,4 +1,4 @@
-package ufrpe.deinfo.bcc.view.controller;
+package ufrpe.deinfo.bcc.view.controller.cadastro;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +9,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import ufrpe.deinfo.bcc.controller.ControladorFuncionario;
+import ufrpe.deinfo.bcc.model.Funcionario;
+import ufrpe.deinfo.bcc.view.controller.MainApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ public class CadastrarFuncionario {
     private ControladorFuncionario controladorFuncionario;
     private static Stage systemStage;
     private static MainApp mainApp;
+    private static Funcionario funcionarioCorrente;
 
     public void initialize() {
         controladorFuncionario = ControladorFuncionario.getInstance();
@@ -73,8 +76,13 @@ public class CadastrarFuncionario {
     @FXML
     void voltarOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showMenuMecanicoChefe();
     }
 
     public static void setPrimaryStage(Stage stage) {systemStage = stage;}
+
+    public static void setFuncionarioCorrente(Funcionario funcionarioCorrente) {
+        CadastrarFuncionario.funcionarioCorrente = funcionarioCorrente;
+    }
 }

@@ -5,21 +5,21 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.MenuMecanicoAssistente">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ufrpe.deinfo.bcc.view.controller.menu.MenuMecanicoAssistente">
    <children>
       <MenuBar layoutX="223.0" prefHeight="29.0" prefWidth="600.0" AnchorPane.bottomAnchor="373.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
           <Menu mnemonicParsing="false" text="Relatório">
                <items>
-                  <MenuItem fx:id="relatorioCaminhaoMenuItem" mnemonicParsing="false" onAction="#relatorioCaminhaoOnAction" text="Caminhão" />
-                  <MenuItem fx:id="relatorioClienteMenuItem" mnemonicParsing="false" onAction="#relatorioClienteOnAction" text="Cliente" />
-                  <MenuItem fx:id="relatorioPecaMenuItem" mnemonicParsing="false" onAction="#relatorioPecaOnAction" text="Peça" />
+                  <MenuItem fx:id="relatorioCaminhaoMenuItem" disable="true" mnemonicParsing="false" onAction="#relatorioCaminhaoOnAction" text="Caminhão" />
+                  <MenuItem fx:id="relatorioClienteMenuItem" disable="true" mnemonicParsing="false" onAction="#relatorioClienteOnAction" text="Cliente" />
+                  <MenuItem fx:id="relatorioPecaMenuItem" disable="true" mnemonicParsing="false" onAction="#relatorioPecaOnAction" text="Peça" />
                   <MenuItem fx:id="relatorioServicoMenuItem" mnemonicParsing="false" onAction="#relatorioServicoOnAction" text="Serviço" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Sistema">
             <items>
-              <MenuItem fx:id="sobreSistemaMenuItem" mnemonicParsing="false" onAction="#sobreSistemaOnAction" text="Sobre" />
+              <MenuItem fx:id="sobreSistemaMenuItem" disable="true" mnemonicParsing="false" onAction="#sobreSistemaOnAction" text="Sobre" />
                   <MenuItem fx:id="sistemaTrocarMenuItem" mnemonicParsing="false" onAction="#trocarUsuarioOnAction" text="Trocar usuário" />
                   <MenuItem fx:id="sistemaSairMenuItem" mnemonicParsing="false" onAction="#sairOnAction" text="Sair" />
             </items>

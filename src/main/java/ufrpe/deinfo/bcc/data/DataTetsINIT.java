@@ -3,6 +3,7 @@ package ufrpe.deinfo.bcc.data;
 import ufrpe.deinfo.bcc.controller.ControladorCaminhao;
 import ufrpe.deinfo.bcc.controller.ControladorCliente;
 import ufrpe.deinfo.bcc.controller.ControladorEndereco;
+import ufrpe.deinfo.bcc.controller.ControladorFuncionario;
 
 import java.time.LocalDate;
 
@@ -10,6 +11,7 @@ public class DataTetsINIT {
     private ControladorCaminhao controladorCaminhao;
     private ControladorCliente controladorCliente;
     private ControladorEndereco controladorEndereco;
+    private ControladorFuncionario controladorFuncionario;
     private static DataTetsINIT instance;
 
     String[] chassis = {"RM1NAB45QYZ2VRHCK", "JO5GMM0FTQRAOC1KA", "98D1PF9D4HBBFBH5I", "8HI5WK5NLPHZYG2ZR",
@@ -39,6 +41,7 @@ public class DataTetsINIT {
         controladorCaminhao = ControladorCaminhao.getInstance();
         controladorEndereco = ControladorEndereco.getInstance();
         controladorCliente = ControladorCliente.getInstance();
+        controladorFuncionario = ControladorFuncionario.getInstance();
     }
 
     public static DataTetsINIT getInstance() {
@@ -65,5 +68,8 @@ public class DataTetsINIT {
                 controladorCaminhao.criar(chassis[i], placas[i], scaniaModelos[i-5], fabricantes[1], anos[i],
                         controladorCliente.buscarPorNome(nomesClientes[1]), kilometragem[i]);
         }
+
+        controladorFuncionario.criar("Mattle", "awq", "Mecanico Assistente", "Tempus", "Hammer");
+        controladorFuncionario.criar("Piccus", "1awfa", "Mecanico Chefe", "cook", "apple");
     }
 }

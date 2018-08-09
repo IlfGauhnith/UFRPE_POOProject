@@ -1,4 +1,4 @@
-package ufrpe.deinfo.bcc.view.controller;
+package ufrpe.deinfo.bcc.view.controller.cadastro;
 
 import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
@@ -21,6 +21,7 @@ import ufrpe.deinfo.bcc.model.Caminhao;
 import ufrpe.deinfo.bcc.model.Cliente;
 import ufrpe.deinfo.bcc.model.Funcionario;
 import ufrpe.deinfo.bcc.model.Peca;
+import ufrpe.deinfo.bcc.view.controller.MainApp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -100,6 +101,7 @@ public class CadastrarServico {
     private static MainApp mainApp;
     private static List<Peca> pecasSelecionadas;
     private static double custoTotal;
+    private static Funcionario funcionarioCorrente;
 
     public void initialize() {
         controladorPeca = ControladorPeca.getInstance();
@@ -163,11 +165,11 @@ public class CadastrarServico {
     void adicionarOnAction(ActionEvent event) {
         ObservableList<Peca> pecasSelecOBSL = pecasSelecionadasTV.getItems();
         Peca pecaSelected = pecasDisponiveisTV.getSelectionModel().getSelectedItem();
-
-        pecasSelecOBSL.add(new Peca(pecaSelected.getRef(), pecaSelected.getDescricao(), pecaSelected.getPrecoUnitario(),
-                qtdAadcComboBox.getValue()));
+        Peca peca = new Peca(pecaSelected.getRef(), pecaSelected.getDescricao(), pecaSelected.getPrecoUnitario(),
+                qtdAadcComboBox.getValue());
+        pecasSelecOBSL.add(peca);
         controladorPeca.removerDoEstoque(pecaSelected, qtdAadcComboBox.getValue());
-        pecasSelecionadas.add(pecaSelected);
+        pecasSelecionadas.add(peca);
 
         custoTotal = custoTotal + (pecaSelected.getPrecoUnitario()*qtdAadcComboBox.getValue());
         custoTotaltxt.setText(Double.toString(custoTotal));
@@ -189,7 +191,7 @@ public class CadastrarServico {
 
         try {
             controladorServico.criar(dataEntrada, dataEstimadaSaida, kilometragem, descricao, caminhao,
-                    controladorCaminhao.buscarDono(caminhao), funcionario);
+                    controladorCaminhao.buscarDono(caminhao), funcionario, pecasSelecionadas);
             mainApp.showOperacaoRelizadaPopup();
             voltarOnAction(new ActionEvent());
         } catch(IllegalArgumentException ex) {
@@ -223,6 +225,7 @@ public class CadastrarServico {
             pecasDispOBSL.get(indexof).adicionarAoEstoque(p.getQuantidade());
         }
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showMenuMecanicoChefe();
     }
 
@@ -251,4 +254,8 @@ public class CadastrarServico {
     }
 
     public static void setPrimaryStage(Stage stage) {systemStage = stage;}
+
+    public static void setFuncionarioCorrente(Funcionario funcionarioCorrente) {
+        CadastrarServico.funcionarioCorrente = funcionarioCorrente;
+    }
 }

@@ -1,4 +1,4 @@
-package ufrpe.deinfo.bcc.view.controller;
+package ufrpe.deinfo.bcc.view.controller.cadastro;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 import sun.applet.Main;
 import ufrpe.deinfo.bcc.controller.ControladorFuncionario;
 import ufrpe.deinfo.bcc.controller.ControladorPeca;
+import ufrpe.deinfo.bcc.model.Funcionario;
+import ufrpe.deinfo.bcc.view.controller.MainApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ public class CadastrarPeca {
     private static Stage systemStage;
     private static MainApp mainApp;
     private static ControladorPeca controladorPeca;
+    private static Funcionario funcionarioCorrente;
 
     public void initialize() {
         mainApp = MainApp.getInstance();
@@ -57,7 +60,7 @@ public class CadastrarPeca {
     @FXML
     void confirmarOnAction(ActionEvent event) {
         String ref = refTF.getText();
-        double precoUnit = Double.parseDouble(precoUnitTF.getText());
+        String precoUnit = precoUnitTF.getText();
         int qtd = qtdComboBox.getValue();
         String desc = descrTA.getText();
 
@@ -74,8 +77,13 @@ public class CadastrarPeca {
     @FXML
     void voltarOnAction(ActionEvent event) {
         MainApp.setPrimaryStage(systemStage);
+        MainApp.setFuncionarioCorrente(funcionarioCorrente);
         mainApp.showMenuMecanicoChefe();
     }
 
     public static void setPrimaryStage(Stage stage) {systemStage = stage;}
+
+    public static void setFuncionarioCorrente(Funcionario funcionarioCorrente) {
+        CadastrarPeca.funcionarioCorrente = funcionarioCorrente;
+    }
 }

@@ -20,17 +20,17 @@ public class ControladorPeca {
         return instance;
     }
 
-    public void criar(String ref, String desc, double precoUnit, int qtd) throws IllegalArgumentException {
+    public void criar(String ref, String desc, String precoUnit, int qtd) throws IllegalArgumentException {
         if(ref == null)
             throw new IllegalArgumentException("Referência nula");
         else if(desc == null)
             throw new IllegalArgumentException("Descrição nula");
-        else if(precoUnit <= 0)
-            throw new IllegalArgumentException("Preço unitário não pode ser menor ou igual a 0");
         else if(qtd < 0)
             throw new IllegalArgumentException("Quantidade não pode ser negativa");
+        else if(Double.parseDouble(precoUnit) <= 0)
+            throw new IllegalArgumentException("Preço unitário não pode ser menor ou igual a 0");
 
-        Peca peca = new Peca(ref, desc, precoUnit, qtd);
+        Peca peca = new Peca(ref, desc, Double.parseDouble(precoUnit), qtd);
         estoque.criarPeca(peca);
     }
 

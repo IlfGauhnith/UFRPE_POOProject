@@ -113,6 +113,10 @@ public class Servico {
         this.mecanicoResponsavel = mecanicoResponsavel;
     }
 
+    public void adicionarPecas(List<Peca> pecas) {
+        relacaoPecas.addAll(pecas);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -138,7 +142,10 @@ public class Servico {
     }
 
     public void adicionarPeca(Peca peca) {
-        // É correto avaliar a quantidade disponível da peca aqui?
         relacaoPecas.add(peca);
+    }
+
+    public void adicionarCusto(double custo) {
+        custoTotal = custoTotal + custo;
     }
 }

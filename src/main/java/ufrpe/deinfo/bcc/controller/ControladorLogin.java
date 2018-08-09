@@ -8,7 +8,7 @@ public class ControladorLogin {
     private RepositorioFuncionario repositorioFuncionario;
 
 
-    private void ControladorLogin() {
+    private ControladorLogin() {
         repositorioFuncionario = RepositorioFuncionario.getInstance();
     }
 

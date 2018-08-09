@@ -2,11 +2,13 @@ package ufrpe.deinfo.bcc.view.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import ufrpe.deinfo.bcc.controller.ControladorFuncionario;
 import ufrpe.deinfo.bcc.controller.ControladorLogin;
@@ -55,16 +57,29 @@ public class LoginScreen {
 
             switch (cargo) {
                 case ("Mecanico Chefe") : {
+                    MainApp.setFuncionarioCorrente(f);
                     mainApp.showMenuMecanicoChefe();
+                    break;
                 }
                 case("Mecanico Assistente") : {
+                    MainApp.setFuncionarioCorrente(f);
                     mainApp.showMenuAssistenteMecanico();
+                    break;
                 }
                 case("") : {
-
+                    break;
                 }
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Usuário ou senha inválidos");
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(systemStage);
+            alert.showAndWait();
         }
+
 
     }
 

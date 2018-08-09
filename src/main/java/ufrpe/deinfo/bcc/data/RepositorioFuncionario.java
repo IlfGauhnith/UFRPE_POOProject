@@ -10,7 +10,7 @@ public class RepositorioFuncionario implements IRepositorio<Funcionario> {
     private static RepositorioFuncionario instance;
     private List<Funcionario> repositorio;
 
-    private RepositorioFuncionario() { ;
+    private RepositorioFuncionario() {
         repositorio = new ArrayList<>();
     }
 
