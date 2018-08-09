@@ -1,6 +1,5 @@
 package ufrpe.deinfo.bcc.data;
 
-import com.google.gson.Gson;
 import ufrpe.deinfo.bcc.model.Caminhao;
 
 import java.lang.reflect.Array;
